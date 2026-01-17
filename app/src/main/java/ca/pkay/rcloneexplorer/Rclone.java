@@ -631,6 +631,22 @@ public class Rclone {
         ArrayList<String> params = new ArrayList<>(Arrays.asList(
                 createCommandWithOptions("serve", commandProtocol, "--addr", address, path)));
 
+        // vfs_cache_mode = full
+        params.add("--vfs-cache-mode");
+        params.add("full");
+        
+        // vfs_cache_max_size = 5G
+        params.add("--vfs-cache-max-size");
+        params.add("5G");
+        
+        // vfs_cache_max_age = 1d
+        params.add("--vfs-cache-max-age");
+        params.add("1d");
+        
+        // dir_cache_time = 1d
+        params.add("--dir-cache-time");
+        params.add("1d");
+
         if(null != user && user.length() > 0) {
             params.add("--user");
             params.add(user);
